@@ -47,8 +47,9 @@ app.post('/api/ingest', async (req, res) => {
       ]);
       inserted++;
     } catch (e) {
-      console.error('Error:', e.message);
-    }
+  console.error('Error:', e.message);
+  return res.status(500).json({ ok: false, error: e.message });
+}
   }
   res.json({ ok: true, inserted });
 });
